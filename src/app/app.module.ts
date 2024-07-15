@@ -8,6 +8,9 @@ import { TableDataComponent } from './components/table-data/table-data.component
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
+import { NameFilterPipe } from './pipes/name-filter.pipe';
+import { AmountFilterPipe } from './pipes/amount-filter.pipe';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -15,13 +18,16 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     TableDataComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    NameFilterPipe,
+    AmountFilterPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
