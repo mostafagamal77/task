@@ -11,6 +11,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { NameFilterPipe } from './pipes/name-filter.pipe';
 import { AmountFilterPipe } from './pipes/amount-filter.pipe';
 import { FormsModule } from '@angular/forms';
+import { NgApexchartsModule } from "ng-apexcharts";
+
 
 
 @NgModule({
@@ -27,7 +29,8 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgApexchartsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

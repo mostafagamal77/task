@@ -1,30 +1,47 @@
-<div>
-  <input type="text" placeholder="Search by name" [(ngModel)]="nameSearchText" />
-  <input type="number" placeholder="Search by amount" [(ngModel)]="searchAmount" />
-</div>
-
-
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Name</th>
-      <th scope="col">Transactions</th>
-      <th scope="col">Graph</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let customer of combinedData | nameFilter:nameSearchText | amountFilter:searchAmount; index as i">
-      <th scope="row">{{ i + 1 }}</th>
-      <td>{{ customer.name }}</td>
-      <td>
-        <div *ngFor="let item of customer.transactions">
-          <div>
-            {{ item.date | date: 'dd/MM/yyyy' }} - {{ item.amount }}
-          </div>
-        </div>
-        <!-- <td>{{ customer.transactions }}</td> -->
-      <td>{{ customer.name }}</td>
-    </tr>
-  </tbody>
-</table>
+<section class="container-fluid p-5">
+  <div>
+    <input type="text" placeholder="Search by name" [(ngModel)]="nameSearchText" />
+    <input type="number" placeholder="Search by amount" [(ngModel)]="searchAmount" />
+  </div>
+  <div class="w-100 table-container rounded-3 mb-4">
+    <table class="custom-table w-100 ">
+      <thead class="bg-main text-light">
+        <tr class="text-center">
+          <th scope="col">CustomerId</th>
+          <th scope="col">Name</th>
+          <th scope="col">Transaction Date</th>
+          <th scope="col">Amount</th>
+        </tr>
+      </thead>
+      <tbody class="border border-1 ">
+        <tr *ngFor="let customer of combinedData | nameFilter:nameSearchText | amountFilter:searchAmount; index as i"
+          (click)="selectCustomer(customer)" class="pointer text-center">
+          <th scope="row">#{{ i + 1 }}</th>
+          <td>{{ customer.name }}</td>
+          <td>
+            <div *ngFor="let item of customer.transactions">
+              {{ item.date | date: 'dd/MM/yyyy' }}
+            </div>
+            <div *ngIf="!customer.transactions.length" class="text-capitalize">
+              no transactions
+            </div>
+          </td>
+          <td>
+            <div *ngFor="let item of customer.transactions">
+              {{ item.amount | currency}}
+            </div>
+            <div *ngIf="!customer.transactions.length" class="text-capitalize">
+              N/A
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <hr>
+  <div id="chart" class="mt-2">
+    <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [dataLabels]="chartOptions.dataLabels"
+      [plotOptions]="chartOptions.plotOptions" [yaxis]="chartOptions.yaxis" [xaxis]="chartOptions.xaxis"
+      [fill]="chartOptions.fill" [title]="chartOptions.title"></apx-chart>
+  </div>
+</section>

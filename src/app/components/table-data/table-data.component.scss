@@ -1,0 +1,23 @@
+.table-container {
+  overflow: auto;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  min-width: 800px;
+}
+
+th,
+td {
+  padding: 8px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+.custom-table tbody tr:nth-child(even) {
+  background-color: #e5e5f5;
+}
+
+tbody tr:hover {
+  background-color: #0d0a3a !important;
+  color: #ddd;
+}

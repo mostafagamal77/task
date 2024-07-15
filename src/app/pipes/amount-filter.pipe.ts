@@ -9,7 +9,7 @@ export class AmountFilterPipe implements PipeTransform {
     if (!customers) return [];
     if (!amount) return customers;
     return customers.map(item => {
-      const filteredTransactions = item.transactions.filter((transaction: any) => transaction.amount >= amount);
+      const filteredTransactions = item.transactions.filter((transaction: any) => transaction.amount === amount);
       return { ...item, transactions: filteredTransactions };
     }).filter(item => item.transactions.length > 0);
   }

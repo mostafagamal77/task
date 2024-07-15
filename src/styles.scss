@@ -4,15 +4,14 @@
 @import "bootstrap/scss/bootstrap";
 
 /* Variables */
-$main-color: #0d0b2b;
+$main-color: #100d38;
 $sec-color: #2e236c;
 $light: #f5f5f5;
 
 //global styles
 body {
   min-height: 100vh;
-  background-color: $main-color;
-  color: $light;
+  background-color: $light;
 }
 a {
   text-decoration: none;
@@ -25,4 +24,7 @@ a {
 }
 .bg-sec {
   background-color: $sec-color !important;
+}
+.pointer {
+  cursor: pointer;
 }
