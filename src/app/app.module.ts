@@ -12,6 +12,7 @@ import { NameFilterPipe } from './pipes/name-filter.pipe';
 import { AmountFilterPipe } from './pipes/amount-filter.pipe';
 import { FormsModule } from '@angular/forms';
 import { NgApexchartsModule } from "ng-apexcharts";
+import { DateFilterPipe } from './pipes/date-filter.pipe';
 
 
 
@@ -22,7 +23,8 @@ import { NgApexchartsModule } from "ng-apexcharts";
     NavbarComponent,
     FooterComponent,
     NameFilterPipe,
-    AmountFilterPipe
+    AmountFilterPipe,
+    DateFilterPipe
   ],
   imports: [
     BrowserModule,

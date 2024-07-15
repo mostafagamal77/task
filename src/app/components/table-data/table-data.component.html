@@ -1,7 +1,10 @@
 <section class="container-fluid p-5">
-  <div>
-    <input type="text" placeholder="Search by name" [(ngModel)]="nameSearchText" />
-    <input type="number" placeholder="Search by amount" [(ngModel)]="searchAmount" />
+  <div class="d-flex align-items-center gap-2 mb-3">
+    <span class="mdi mdi-filter"></span>
+    <input type="text" class="form-control" placeholder="Search by name" [(ngModel)]="nameSearchText" />
+    <input type="number" class="form-control" placeholder="Search by amount" [(ngModel)]="searchAmount" />
+    <input type="date" class="form-control" min="" placeholder="Search by Date" [(ngModel)]="searchDate" />
+    <button type="button" class="btn btn-primary" (click)="resetFilters()">reset</button>
   </div>
   <div class="w-100 table-container rounded-3 mb-4">
     <table class="custom-table w-100 ">
@@ -14,7 +17,8 @@
         </tr>
       </thead>
       <tbody class="border border-1 ">
-        <tr *ngFor="let customer of combinedData | nameFilter:nameSearchText | amountFilter:searchAmount; index as i"
+        <tr
+          *ngFor="let customer of combinedData | nameFilter:nameSearchText | amountFilter:searchAmount | dateFilter:searchDate; index as i"
           (click)="selectCustomer(customer)" class="pointer text-center">
           <th scope="row">#{{ i + 1 }}</th>
           <td>{{ customer.name }}</td>
@@ -35,6 +39,9 @@
             </div>
           </td>
         </tr>
+        <div *ngIf="!combinedData.length" class="fw-medium text-danger text-center">
+          No Date To Show
+        </div>
       </tbody>
     </table>
   </div>

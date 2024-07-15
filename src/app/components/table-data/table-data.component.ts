@@ -16,7 +16,6 @@ import {
   ApexFill
 } from "ng-apexcharts";
 
-
 export type ChartOptions = {
   series: ApexAxisChartSeries;
   chart: ApexChart;
@@ -37,25 +36,19 @@ export class TableDataComponent implements OnInit, OnDestroy {
 
   private readonly customersService = inject(CustomersService);
 
+  @ViewChild("chart") chart!: ChartComponent;
+  public chartOptions: ChartOptions;
+
   destroy$ = new Subject<void>();
   customers!: GetCustomers[];
   combinedData: any[] = [];
   transactions!: GetTransactions[];
-  searchTerm: string = '';
-  loading: boolean = false;
   page: number = 1;
   pageSize: number = 5;
   total: number = 0;
   nameSearchText = '';
-  minAmount: number | null = null;
-  maxAmount: number | null = null;
   searchAmount: number | null = null;
-  selectedCustomerId: number | null = null;
-
-
-
-  @ViewChild("chart") chart!: ChartComponent;
-  public chartOptions: ChartOptions;
+  searchDate!: string;
 
   constructor() {
     this.chartOptions = {
@@ -142,7 +135,7 @@ export class TableDataComponent implements OnInit, OnDestroy {
         }
       },
       title: {
-        text: `Total Amount of Transactions per Day`,
+        text: `Please select customer to show graph`,
         offsetY: 0,
         align: "center",
         style: {
@@ -155,7 +148,6 @@ export class TableDataComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.getAllData();
   }
-
 
   getAllData() {
     this.customersService.getAllCustomers().pipe(
@@ -199,13 +191,6 @@ export class TableDataComponent implements OnInit, OnDestroy {
       };
       this.combinedData.push(customerData);
     });
-
-    console.log(this.combinedData);
-  }
-
-  onCustomerChange(event: any) {
-    const customerId = parseInt(event.target.value, 10);
-    this.selectedCustomerId = customerId;
   }
 
   selectCustomer(customer: GetCustomers) {
@@ -313,7 +298,7 @@ export class TableDataComponent implements OnInit, OnDestroy {
         title: {
           text: `Total Amount of Transactions per Day for ${customer.name}`,
           offsetY: 0,
-          align: "center",
+          align: "left",
           style: {
             color: "#444"
           }
@@ -322,6 +307,11 @@ export class TableDataComponent implements OnInit, OnDestroy {
     }
   }
 
+  resetFilters() {
+    this.nameSearchText = '';
+    this.searchAmount = null;
+    this.searchDate = '';
+  }
 
   ngOnDestroy(): void {
     this.destroy$.next();
