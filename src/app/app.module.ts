@@ -13,6 +13,7 @@ import { AmountFilterPipe } from './pipes/amount-filter.pipe';
 import { FormsModule } from '@angular/forms';
 import { NgApexchartsModule } from "ng-apexcharts";
 import { DateFilterPipe } from './pipes/date-filter.pipe';
+import { ScrollBtnComponent } from './components/scroll-btn/scroll-btn.component';
 
 
 
@@ -24,7 +25,8 @@ import { DateFilterPipe } from './pipes/date-filter.pipe';
     FooterComponent,
     NameFilterPipe,
     AmountFilterPipe,
-    DateFilterPipe
+    DateFilterPipe,
+    ScrollBtnComponent
   ],
   imports: [
     BrowserModule,

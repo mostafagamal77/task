@@ -1,4 +1,4 @@
-import { Component, ElementRef, inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { map, Subject, switchMap, takeUntil } from 'rxjs';
 import { GetCustomers } from 'src/app/modals/get-customers';
 import { GetTransactions } from 'src/app/modals/get-transactions';
@@ -48,7 +48,7 @@ export class TableDataComponent implements OnInit, OnDestroy {
   page: number = 1;
   pageSize: number = 5;
   total: number = 0;
-  nameSearchText = '';
+  nameSearchText: string = '';
   searchAmount: number | null = null;
   searchDate!: string;
 
