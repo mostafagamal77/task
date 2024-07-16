@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { map, Subject, switchMap, takeUntil } from 'rxjs';
 import { GetCustomers } from 'src/app/modals/get-customers';
 import { GetTransactions } from 'src/app/modals/get-transactions';

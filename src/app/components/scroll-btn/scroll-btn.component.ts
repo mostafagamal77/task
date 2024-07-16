@@ -12,7 +12,7 @@ export class ScrollBtnComponent {
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
-    this.showScrollToTopButton = window.pageYOffset > 300; // Adjust the value as needed
+    this.showScrollToTopButton = window.scrollY > 300;
   }
 
   scrollToTop() {
