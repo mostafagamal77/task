@@ -47,9 +47,12 @@
   </div>
   <hr>
   <div id="chart" #chartContainer class="mt-2">
-    <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [dataLabels]="chartOptions.dataLabels"
+    <!-- <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [dataLabels]="chartOptions.dataLabels"
       [plotOptions]="chartOptions.plotOptions" [yaxis]="chartOptions.yaxis" [xaxis]="chartOptions.xaxis"
-      [fill]="chartOptions.fill" [title]="chartOptions.title"></apx-chart>
+      [fill]="chartOptions.fill" [title]="chartOptions.title">
+    </apx-chart> -->
+
+    <app-chart [customer]="selectedCustomer"></app-chart>
   </div>
 
   <app-scroll-btn></app-scroll-btn>
