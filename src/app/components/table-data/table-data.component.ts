@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { map, Subject, switchMap, takeUntil } from 'rxjs';
 import { GetCustomers } from 'src/app/modals/get-customers';
 import { GetTransactions } from 'src/app/modals/get-transactions';
@@ -37,6 +37,8 @@ export class TableDataComponent implements OnInit, OnDestroy {
   private readonly customersService = inject(CustomersService);
 
   @ViewChild("chart") chart!: ChartComponent;
+  @ViewChild('chartContainer') chartContainer!: ElementRef;
+
   public chartOptions: ChartOptions;
 
   destroy$ = new Subject<void>();
@@ -195,6 +197,7 @@ export class TableDataComponent implements OnInit, OnDestroy {
 
   selectCustomer(customer: GetCustomers) {
     this.updateChart(customer);
+    this.scrollToChart();
   }
 
   updateChart(customer: GetCustomers) {
@@ -311,6 +314,12 @@ export class TableDataComponent implements OnInit, OnDestroy {
     this.nameSearchText = '';
     this.searchAmount = null;
     this.searchDate = '';
+  }
+
+  scrollToChart() {
+    if (this.chartContainer) {
+      this.chartContainer.nativeElement.scrollIntoView({ behavior: 'smooth' });
+    }
   }
 
   ngOnDestroy(): void {
