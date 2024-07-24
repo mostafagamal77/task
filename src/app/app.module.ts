@@ -7,7 +7,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TableDataComponent } from './components/table-data/table-data.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NameFilterPipe } from './pipes/name-filter.pipe';
 import { AmountFilterPipe } from './pipes/amount-filter.pipe';
 import { FormsModule } from '@angular/forms';
@@ -17,6 +17,7 @@ import { ScrollBtnComponent } from './components/scroll-btn/scroll-btn.component
 import { CustomChartComponent } from './components/chart/chart.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { LoaderInterceptor } from './interceptors/loader.interceptor';
 
 
 
@@ -43,7 +44,9 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     BrowserAnimationsModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
