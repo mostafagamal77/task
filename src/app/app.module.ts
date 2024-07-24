@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -15,6 +15,8 @@ import { NgApexchartsModule } from "ng-apexcharts";
 import { DateFilterPipe } from './pipes/date-filter.pipe';
 import { ScrollBtnComponent } from './components/scroll-btn/scroll-btn.component';
 import { CustomChartComponent } from './components/chart/chart.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 
 
@@ -37,7 +39,10 @@ import { CustomChartComponent } from './components/chart/chart.component';
     HttpClientModule,
     FormsModule,
     NgApexchartsModule,
+    NgxSpinnerModule.forRoot({ type: 'square-jelly-box' }),
+    BrowserAnimationsModule
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],
   bootstrap: [AppComponent]
 })

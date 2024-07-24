@@ -26,6 +26,7 @@
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
               "node_modules/@mdi/font/css/materialdesignicons.min.css",
+              "node_modules/ngx-spinner/animations/square-jelly-box.css",
               "src/styles.scss"
             ],
             "scripts": ["node_modules/apexcharts/dist/apexcharts.min.js"]
